@@ -9,6 +9,8 @@ tags:
 Autor: "owenliu"
 ---
 
+[TOC]
+
 # 博客使用注意事项
 
 博客项目搭建参考 [Github 官方文档](https://help.github.com/en/articles/setting-up-your-github-pages-site-locally-with-jekyll)
@@ -74,5 +76,84 @@ Autor: "owenliu"
 
    
 
+## 本地测试环境不支持中文文件名
 
+刚刚接触 github pages，在 Mac 上安装了 Ruby，环境后，使用 jekyll 搭建博客时候，在本地预览时候无法打开，报以下错误信息：
 
+```
+ERROR Encoding::CompatibilityError: incompatible character encodings: UTF-8 and ASCII-8BIT
+```
+
+或者
+
+```
+ERROR -- : fsevent: running worker failed: incompatible character encodings: ASCII-8BIT and UTF-8
+```
+
+而提交到 github 上却可以正常解析。看了一下发现是文件写的博客有什么变化，原来是因为博客的 [markdown ](https://www.baidu.com/s?wd=markdown&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd)文件使用了中文文件名，jekyll 无法正常解析，所以才出现乱码。
+
+解决方案有两种：
+
+1. **修改 Ruby 的 lib 文件【[转自](http://blog.chiyiw.com/2016/03/20/jekyll-%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%AD%E6%96%87%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3.html)】**
+
+   /System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/ruby/2.3.0/webrick/httpservlet/`  下的 filehandler.rb 文件，先备份.
+
+   找到下列两处，添加一句（`+`的一行为添加部分）
+
+   ```
+   path = req.path_info.dup.force_encoding(Encoding.find("filesystem"))+ path.force_encoding("UTF-8") # 加入编码if trailing_pathsep?(req.path_info)
+   ```
+
+   ```
+   break if base == "/"+ base.force_encoding("UTF-8") #加入編碼break unless File.directory?(File.expand_path(res.filename + base))
+   ```
+
+> 修改完重新`jekyll serve`即可支持中文文件名。
+
+⚠️注意：这里修改库文件有可能失败，解决方案参考[这里](2019-02-26-关于-MAC-系统没有修改-usrbin-和-usrlib-文件夹权限问题.md)
+
+2. **基于 Docker 搭建本地 jykell 环境【[转自](https://archerwq.github.io/2017/09/21/setup-jekyll-locally-with-docker/)】**
+
+   在本地安装 Jekyll 虽然不是很复杂，但对于不懂 Ruby 的小白用户来说，安装 Ruby, RubyGems, GCC&Make 也不是很轻松，还好有 Docker，可以一键 Setup.
+
+   **安装Docker**
+
+   参考：[Install Docker](https://docs.docker.com/engine/installation/)，[docker compose](https://docs.docker.com/compose/reference/overview/)
+
+   **创建docker-compose.yml**
+
+   ```
+   jekyll:
+       image: jekyll/jekyll:pages
+       command: jekyll serve --watch
+       ports:
+           - 3999:4000
+       volumes:
+           - ~/dev/git/archerwq.github.io:/srv/jekyll/
+   ```
+
+    - **jekyll/jekyll: pages** 是专门适用于 Github Pages 的 Jekyll 镜像
+
+    - **jekyll serve –watch**: 启动容器时运行的命令，这个命令会启动 Jekyll 内置的用于开发环境的 Web 服务器，**–watch **参数表示有任何文件变化时自动重新生成网页
+
+    - **3999:4000**: 把容器的 4000 端口映射到宿主机的 3999 端口
+
+    - **xxxxx/owenliu1122.github.io:/srv/jekyll/** 把宿主机上的 Jekyll Site 所在目录映射到容器的**/srv/jekyll/**目录，Jekyll 默认从这个目录读 Jekyll Site
+
+    **启动 Docker 容器**
+
+      在 docker-compose.yml 所在目录运行 **docker-compose up** 命令， 如下:
+
+      ```shell
+   ➜  github.io docker-compose -f docker-compose.yml up -d
+   Pulling jekyll (jekyll/jekyll:pages)...
+   pages: Pulling from jekyll/jekyll
+   6c40cc604d8e: Pull complete
+   4e0e4ac8c025: Pull complete
+   9a13ad0cfe1d: Pull complete
+   16f42435de28: Pull complete
+   6b537e0b3f4d: Pull complete
+   Creating githubio_jekyll_1 ... done
+      ```
+
+      这样你就可以在本地编辑文章，然后通过访问 `http://localhost:3999` 动态的看到文章的显示效果。
