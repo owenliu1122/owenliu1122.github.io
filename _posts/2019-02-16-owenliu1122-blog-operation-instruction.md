@@ -110,7 +110,7 @@ ERROR -- : fsevent: running worker failed: incompatible character encodings: ASC
 
 > 修改完重新`jekyll serve`即可支持中文文件名。
 
-⚠️注意：这里修改库文件有可能失败，解决方案参考[这里](2019-02-26-关于-MAC-系统没有修改-usrbin-和-usrlib-文件夹权限问题.md)
+⚠️注意：这里修改库文件有可能失败，解决方案参考[这里](https://owenliu1122.github.io/mac/2019/02/25/%E5%85%B3%E4%BA%8E-MAC-%E7%B3%BB%E7%BB%9F%E6%B2%A1%E6%9C%89%E4%BF%AE%E6%94%B9-usrbin-%E5%92%8C-usrlib-%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/)
 
 2. **基于 Docker 搭建本地 jykell 环境【[转自](https://archerwq.github.io/2017/09/21/setup-jekyll-locally-with-docker/)】**
 
