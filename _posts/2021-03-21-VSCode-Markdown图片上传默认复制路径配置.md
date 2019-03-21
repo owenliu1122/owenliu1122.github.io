@@ -29,7 +29,7 @@ typora-copy-images-to: ../images
 
 
 ## Paste Image
-这个官方文档介绍比较全面了
+这个官方文档介绍比较全面了，这里简单介绍几个关键点
 
 - Paste Image: Path 这个设置的是粘贴文件时复制的目标目录
 ![2019-03-21-13-11-27](/images/2019-03-21-13-11-27.png)
@@ -43,7 +43,8 @@ typora-copy-images-to: ../images
 - Paste Image Prefix 这个是图片路径的前缀， 不然图片路径为 `![](images/xxxx.png)`, 设置这个就是 `![](/images/xxxx.png)`
 ![2019-03-21-13-09-09](/images/2019-03-21-13-09-09.png)
 
-[Gihub 地址](https://github.com/mushanshitiancai/vscode-paste-image)
-[Paste Image 官方文档](https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image)
+参考链接：
+- [Gihub 地址](https://github.com/mushanshitiancai/vscode-paste-image)
+- [Paste Image 官方文档](https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image)
 
 
