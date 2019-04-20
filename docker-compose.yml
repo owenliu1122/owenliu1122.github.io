@@ -1,0 +1,7 @@
+jekyll:
+    image: owenliu1122/jekyll:pages
+#    command: bundle install && bundle exec jekyll server
+    ports:
+        - 3998:4000
+    volumes:
+        - /Users/owenliu/my_life/project/src/owenliu1122.github.io:/srv/jekyll/
