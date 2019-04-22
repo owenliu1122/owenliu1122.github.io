@@ -5,8 +5,6 @@ date:   2019-02-25 14:16:23 +0800
 categories: Mac
 tags: 
   - Mac
-  - 权限
-  - lib
 Autor: "owenliu"
 ---
 

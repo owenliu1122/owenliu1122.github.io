@@ -4,9 +4,10 @@ title:  "Golang io interface 实践笔记"
 date:   2019-03-12 11:09:23 +0800
 categories: Golang
 tags: 
-  - io
-  - reader
-  - writer
+  - IO
+  - Reader
+  - Writer
+  - Interface
 Autor: "owenliu"
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images

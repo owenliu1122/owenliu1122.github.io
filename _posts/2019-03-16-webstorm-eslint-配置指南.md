@@ -4,15 +4,14 @@ title:  "webstorm eslint 配置指南"
 date:   2019-03-16 13:05:23 +0800
 categories: Javascript
 tags: 
-  - webstorm
-  - eslint
-  - fix problem
+  - WebStorm
+  - ESLint
 Autor: "owenliu"
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images
 ---
 
-
+WebStorm 配置 ESLint
 
 ## 开启项目 ESLint 
 

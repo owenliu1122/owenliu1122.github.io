@@ -4,12 +4,13 @@ title:  "docker-kafka部署"
 date:   2019-04-02 11:24:23 +0800
 categories: Kafka
 tags: 
-  - docker
+  - docker-compose
   - kafka
 Autor: "owenliu"
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images
 ---
+在此记录使用 docker-compose 启动一个 kafka 集群的命令
 
 ## docker-kafka 部署
 docker-compose.yml

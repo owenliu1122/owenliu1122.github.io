@@ -7,7 +7,7 @@ tags:
   - upload
   - image
   - copy
-  - default path
+  - path
 Autor: "owenliu"
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images

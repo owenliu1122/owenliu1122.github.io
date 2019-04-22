@@ -2,14 +2,14 @@
 layout: post
 title:  "博客使用注意事项"
 date:   2019-02-25 14:16:23 +0800
-categories: MyBlog
+categories: Blog
 tags: 
-  - github pages
-  - specification
+  - Github Pages
+  - Jekyll
 Autor: "owenliu"
 ---
 
-[TOC]
+在 github.io 上搭建自己的博客操作笔记和遇到的一些问题
 
 # 博客使用注意事项
 

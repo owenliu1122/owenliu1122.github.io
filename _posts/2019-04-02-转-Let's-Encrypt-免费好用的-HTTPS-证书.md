@@ -6,11 +6,11 @@ categories: Nginx
 tags: 
   - https
   - cert
+  - Encrypt
 Autor: "owenliu"
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images
 ---
-> 提醒：文中所描述的信息可能已发生改变，请谨慎使用。
 
 很早之前我就在关注 [Let's Encrypt](https://letsencrypt.org/) 这个免费、自动化、开放的证书签发服务。它由 ISRG（Internet Security Research Group，互联网安全研究小组）提供服务，而 ISRG 是来自于美国加利福尼亚州的一个公益组织。Let's Encrypt 得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Chrome 等众多公司和机构的支持，发展十分迅猛。
 

@@ -6,7 +6,6 @@ categories: Ruby
 tags: 
   - gem
   - bundler
-  - error
 Autor: "owenliu"
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images
