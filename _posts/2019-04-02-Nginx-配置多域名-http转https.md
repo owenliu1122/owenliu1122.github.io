@@ -16,7 +16,7 @@ typora-copy-images-to: ../images
 
 #### 1.进入nginx conf目录，并创建备份文件夹
 
-```
+``` shell
 cd /user/local/nginx/conf
 
 mkdir vhost.conf.bak
@@ -24,7 +24,7 @@ mkdir vhost.conf.bak
 
 #### 2.将旧的配置文件移动到备份文件夹
 
-```
+``` shell
 mv vhost/* conf.vhost.bak/
 ```
 
@@ -32,13 +32,13 @@ mv vhost/* conf.vhost.bak/
 
 创建主配置文件负责监听80端口并转发请求
 
-```
+``` shell
 vim index.host.conf
 ```
 
 内容如下：
 
-```
+``` shell
 server {
     listen 80;
     server_name abc.cn www.abc.cn jenkins.abc.cn mymaven.abc.cn dubboadmin.abc.cn;
@@ -48,13 +48,13 @@ server {
 
 创建各域名配置文件监听443端口（可以按域名分开，也可以写一个文件里，我为了方便写在一个文件里）
 
-```
+``` shell
 vim https.host.conf
 ```
 
 内容如下：
 
-```
+``` shell
  server {
         listen       443;
         server_name  www.mrpei.cn  mrpei.cn;
@@ -62,7 +62,7 @@ vim https.host.conf
         ssl on;
         ssl_certificate      /etc/letsencrypt/live/mrpei.cn-0002/fullchain.pem;
         ssl_certificate_key  /etc/letsencrypt/live/mrpei.cn-0002/privkey.pem;
-        
+
         ssl_session_cache    shared:SSL:10m;
         ssl_session_timeout  5m;
 
@@ -70,11 +70,11 @@ vim https.host.conf
         ssl_prefer_server_ciphers  on;
 
         location / {
-			proxy_pass http://112.74.102.226:8080/;
+            proxy_pass http://112.74.102.226:8080/;
             proxy_set_header Host       $http_host;
-			proxy_set_header X-Real-IP $remote_addr;  
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
-			proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Real-IP $remote_addr;  
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+            proxy_set_header X-Forwarded-Proto $scheme;
         }
     }
  server {
@@ -84,7 +84,7 @@ vim https.host.conf
         ssl on;
         ssl_certificate      /etc/letsencrypt/live/mrpei.cn-0002/fullchain.pem;
         ssl_certificate_key  /etc/letsencrypt/live/mrpei.cn-0002/privkey.pem;
-        
+
         ssl_session_cache    shared:SSL:10m;
         ssl_session_timeout  5m;
 
@@ -92,14 +92,14 @@ vim https.host.conf
         ssl_prefer_server_ciphers  on;
 
         location / {
-			proxy_pass http://112.74.102.226:8300;
-			proxy_set_header Host       $http_host;
-			proxy_set_header X-Real-IP $remote_addr;  
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
-			proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_pass http://112.74.102.226:8300;
+            proxy_set_header Host       $http_host;
+            proxy_set_header X-Real-IP $remote_addr;  
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+            proxy_set_header X-Forwarded-Proto $scheme;
         }
     }
-	
+
  server {
         listen       443;
         server_name  mymaven.mrpei.cn;
@@ -107,7 +107,7 @@ vim https.host.conf
         ssl on;
         ssl_certificate      /etc/letsencrypt/live/mrpei.cn-0002/fullchain.pem;
         ssl_certificate_key  /etc/letsencrypt/live/mrpei.cn-0002/privkey.pem;
-        
+
         ssl_session_cache    shared:SSL:10m;
         ssl_session_timeout  5m;
 
@@ -115,14 +115,14 @@ vim https.host.conf
         ssl_prefer_server_ciphers  on;
 
         location / {
-			proxy_pass http://112.74.102.226:8081;
-			proxy_set_header Host       $http_host;
-			proxy_set_header X-Real-IP $remote_addr;  
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
-			proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_pass http://112.74.102.226:8081;
+            proxy_set_header Host       $http_host;
+            proxy_set_header X-Real-IP $remote_addr;  
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+            proxy_set_header X-Forwarded-Proto $scheme;
         }
     }
-	
+
  server {
         listen       443;
         server_name  dubboadmin.mrpei.cn;
@@ -130,7 +130,7 @@ vim https.host.conf
         ssl on;
         ssl_certificate      /etc/letsencrypt/live/mrpei.cn-0002/fullchain.pem;
         ssl_certificate_key  /etc/letsencrypt/live/mrpei.cn-0002/privkey.pem;
-        
+
         ssl_session_cache    shared:SSL:10m;
         ssl_session_timeout  5m;
 
@@ -138,37 +138,34 @@ vim https.host.conf
         ssl_prefer_server_ciphers  on;
 
         location / {
-			proxy_pass http://127.0.0.1:8080;
-			proxy_set_header Host       $http_host;
-			proxy_set_header X-Real-IP $remote_addr;  
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
-			proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_pass http://127.0.0.1:8080;
+            proxy_set_header Host       $http_host;
+            proxy_set_header X-Real-IP $remote_addr;  
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
+            proxy_set_header X-Forwarded-Proto $scheme;
         }
     }
-	
 ```
-
-
 
 ### 二.测试并启用新的配置文件
 
 返回nginx根目录，执行配置文件测试
 
-```
+``` shell
 cd ../
 sbin/nginx -t
 ```
 
 显示如下输出表示测试通过
 
-```
+``` shell
 nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
 nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
 ```
 
 以新的配置文件重启Nginx
 
-```
+``` shell
 sbin/nginx -s reload
 ```
 
@@ -182,7 +179,7 @@ sbin/nginx -s reload
 
 再次执行申请证书命令并-d追加所有需要的域名
 
-```
+``` shell
 cd /usr/server/sslKey/letsencrypt/
 ./letsencrypt-auto certonly --standalone --email 756487195@qq.com -d abc.cn -d jenkins.abc.cn -d mymaven.abc.cn -d dubboadmin.abc.cn
 ```
@@ -195,18 +192,18 @@ cd /usr/server/sslKey/letsencrypt/
 
 修改位置：
 
-```
+``` shell
 ssl_certificate      /etc/letsencrypt/live/mrpei.cn/fullchain.pem;
 ssl_certificate_key  /etc/letsencrypt/live/mrpei.cn/privkey.pem;
 ```
 
 修改为：
 
-```
+``` shell
 ssl_certificate      /etc/letsencrypt/live/mrpei.cn-0002/fullchain.pem;
 ssl_certificate_key  /etc/letsencrypt/live/mrpei.cn-0002/privkey.pem;
 ```
 
 ...
 
-原文链接：https://my.oschina.net/mrpei123/blog/1794001
+[原文链接]: https://my.oschina.net/mrpei123/blog/1794001

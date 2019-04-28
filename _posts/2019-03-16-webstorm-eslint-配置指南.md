@@ -13,7 +13,7 @@ typora-copy-images-to: ../images
 
 WebStorm 配置 ESLint
 
-## 开启项目 ESLint 
+## 开启项目 ESLint
 
 Preference -> Languages & Frameworks -> JavaScript -> Code Quality Tools -> ESLint
 
@@ -24,8 +24,6 @@ Preference -> Languages & Frameworks -> JavaScript -> Code Quality Tools -> ESLi
 此处确认是否勾选了其他的代码验证，可自行配置，ESLint 这个必须勾选。
 
 ![1847986-571ca359b2674673](/images/1847986-571ca359b2674673.png)
-
-
 
 ## 快捷键修复光标所在行的格式问题
 

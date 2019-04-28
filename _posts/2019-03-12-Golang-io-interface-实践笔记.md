@@ -40,4 +40,3 @@ reader := strings.NewReader("message body")
 var writer bytes.Buffer
 _, err = io.Copy(&writer, reader)
 ```
-

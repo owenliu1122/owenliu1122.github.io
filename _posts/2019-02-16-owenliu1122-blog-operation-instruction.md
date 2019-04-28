@@ -17,7 +17,6 @@ Autor: "owenliu"
 
 博客编写需要遵循 jekyll 的规范，请参考 [jekyll 官网文档](https://jekyllrb.com/)  
 
-
 ## **创建文章**
 
 博客的项目目录为 `owenliu1122.github.io`,
@@ -30,7 +29,7 @@ Autor: "owenliu"
 
 如果图片放在 `_post` 目录下，当项目 build 之后，图片是没办法正确显示的，例如会报如下错误：
 
-```
+``` shell
 [2019-02-26 16:25:41] ERROR `/images/bingxing_1.jpg' not found.
 [2019-02-26 16:25:41] ERROR `/jekyll/update/2019/02/25/bingfa_2.jpg' not found.
 [2019-02-26 16:25:41] ERROR `/jekyll/update/2019/02/25/bingfa_bingxing_3.jpg' not found.
@@ -56,7 +55,7 @@ Autor: "owenliu"
 
 3. 写博客时直接引用绝对链接
 
-   ```
+   ``` shell
    ... which is shown in the screenshot below:
    ![My helpful screenshot](/assets/screenshot.jpg)
    ```
@@ -74,23 +73,21 @@ Autor: "owenliu"
    ---
    ```
 
-   
-
 ## 本地测试环境不支持中文文件名
 
 刚刚接触 github pages，在 Mac 上安装了 Ruby，环境后，使用 jekyll 搭建博客时候，在本地预览时候无法打开，报以下错误信息：
 
-```
+``` shell
 ERROR Encoding::CompatibilityError: incompatible character encodings: UTF-8 and ASCII-8BIT
 ```
 
 或者
 
-```
+``` shell
 ERROR -- : fsevent: running worker failed: incompatible character encodings: ASCII-8BIT and UTF-8
 ```
 
-而提交到 github 上却可以正常解析。看了一下发现是文件写的博客有什么变化，原来是因为博客的 [markdown ](https://www.baidu.com/s?wd=markdown&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd)文件使用了中文文件名，jekyll 无法正常解析，所以才出现乱码。
+而提交到 github 上却可以正常解析。看了一下发现是文件写的博客有什么变化，原来是因为博客的 [markdown](https://www.baidu.com/s?wd=markdown&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd)文件使用了中文文件名，jekyll 无法正常解析，所以才出现乱码。
 
 解决方案有两种：
 
@@ -100,11 +97,11 @@ ERROR -- : fsevent: running worker failed: incompatible character encodings: ASC
 
    找到下列两处，添加一句（`+`的一行为添加部分）
 
-   ```
+   ``` ruby
    path = req.path_info.dup.force_encoding(Encoding.find("filesystem"))+ path.force_encoding("UTF-8") # 加入编码if trailing_pathsep?(req.path_info)
    ```
 
-   ```
+   ``` ruby
    break if base == "/"+ base.force_encoding("UTF-8") #加入編碼break unless File.directory?(File.expand_path(res.filename + base))
    ```
 
@@ -122,7 +119,7 @@ ERROR -- : fsevent: running worker failed: incompatible character encodings: ASC
 
    **创建docker-compose.yml**
 
-   ```
+   ``` yaml
    jekyll:
        image: jekyll/jekyll:pages
        command: jekyll serve --watch
@@ -165,13 +162,13 @@ ERROR -- : fsevent: running worker failed: incompatible character encodings: ASC
 
 打开Gemfile
 
-```
+``` shell
 gem "github-pages", group: :jekyll_plugins
 ```
 
 然后更新Gemfile配置
 
-```
+``` shell
 $ bundle update
 bundle update
 The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
@@ -188,7 +185,7 @@ Bundle updated!
 
 看一下我们都下载那些主题，这些主题和GitHub官网推荐的主题是一样的
 
-```
+``` shell
 $ gem list jekyll-theme
 
 *** LOCAL GEMS ***

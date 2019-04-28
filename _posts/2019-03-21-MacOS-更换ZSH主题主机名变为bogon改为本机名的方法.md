@@ -15,20 +15,23 @@ typora-copy-images-to: ../images
 
 更换了 zsh 的主题之后，主机名居然变成了 bogon，强迫症作祟，最后找到以下解决方案：
 
-*现象*
+* 现象 *
+  
 ``` shell
 owenliu@bogon [11时07分25秒] [~]
 -> %
 ```
 
-*操作步骤*
+* 操作步骤 *
+
 ``` shell
 sudo hostname OwenLiu-MacBookPro
 sudo scutil --set LocalHostName $(hostname)
 sudo scutil --set HostName $(hostname)
 ```
 
-*结果*
+* 结果 *
+
 ``` shell
 owenliu@OwenLiu-MacBookPro [11时27分29秒] [~]
 -> %

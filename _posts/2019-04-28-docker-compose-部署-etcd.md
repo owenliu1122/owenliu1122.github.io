@@ -52,16 +52,21 @@ services:
 ### docker-compose 参数说明
 
 #### volumes
+
 我们把宿主机的目录映射到容器的 /etcd-data 目录目的是，每次重新创建容器，数据不会清空
 
 #### ETCDCTL_API
+
 这个环境变量来指定 etcdctl 的 API 版本，2 和 3 的命令执行方式是不一样的
+
 1. `export ETCDCTL_API=2`
     ![2019-04-28-18-11-47](/images/2019-04-28-18-11-47.png)
+
 2. `export ETCDCTL_API=3`
     ![2019-04-28-18-16-31](/images/2019-04-28-18-16-31.png)
 
 #### command
+
 这里的书写方式支持多种，是等效的，我就是使用第三个书写方法。
 
 1. 直接一行字符串，这就是我们正常使用的例如 `command: bundle exec thin -p 3000`
