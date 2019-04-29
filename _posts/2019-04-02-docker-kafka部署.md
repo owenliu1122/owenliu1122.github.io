@@ -14,7 +14,7 @@ typora-copy-images-to: ../images
 
 ## docker-kafka 部署
 
-docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 version: '2'
@@ -40,7 +40,19 @@ services:
       - "9000:9000"                                 ## 暴露端口
 ```
 
-测试连通性
+启动多个kafka 节点，比如3个
+
+``` shell
+docker-compose scale kafka=3
+```
+
+或者启动的时候直接就启动 3 个节点
+
+``` shell
+docker-compose up --scale kafka=3 -d
+```
+
+### 测试连通性
 
 ``` shell
 docker exec -it kafka_kafka_1 /bin/bash
