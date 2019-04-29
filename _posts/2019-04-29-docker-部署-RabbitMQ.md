@@ -6,6 +6,7 @@ categories: RabbitMQ
 tags: [docker, rabbitmq]
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images
+description: docker 一键部署本地 RabbitMQ 测试环境
 ---
 
 ```shell

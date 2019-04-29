@@ -6,9 +6,8 @@ categories: Redis
 tags: [docker, redis]
 typora-root-url: ../../owenliu1122.github.io
 typora-copy-images-to: ../images
+description: docker 一键部署本地 Redis 测试环境
 ---
-
-
 
 ``` shell
 docker pull  redis:5.0
@@ -19,4 +18,3 @@ docker run -p 6379:6379 -v $PWD:/data  -d redis:5.0 redis-server --appendonly ye
 
 src/redis-cli -h localhost -p 6379
 ```
-
