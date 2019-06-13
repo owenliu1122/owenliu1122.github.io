@@ -81,3 +81,14 @@ $KAFKA_HOME/bin/kafka-console-producer.sh --topic=test --broker-list kafka_kafka
 ``` shell
 $KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server kafka_kafka_1:9092 --from-beginning --topic test
 ```
+
+- 查看消费组信息
+
+``` shell
+kafka-consumer-groups.sh --bootstrap-server kafka_kafka_1:9092 --group test-group --describe
+```
+
+- 重置消费族消费偏移量
+``` shell
+kafka-consumer-groups.sh --bootstrap-server kafka_kafka_1:9092 --group test-group --reset-offsets --topic test --to-earliest --execute
+```
