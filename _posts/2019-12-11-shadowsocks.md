@@ -1,10 +1,11 @@
 ---
 layout: post
-title: shadowsocks
+title: 搭建 shadowsocks 代理
 date: 2019-12-11 13:08:11 +0800
-categories:
-tags: [shadowsocks]
-typora-root-url: ../../owenliu1122.github.io
+categories: Linux
+tags: 
+  - shadowsocks
+typora-root-url: ../
 typora-copy-images-to: ../images
 ---
 
