@@ -100,6 +100,10 @@ pm.visualizer.set(template, {
 });
 ```
 
+![image-20191220171418900](/images/image-20191220171418900.png)
+
+
+
 参考链接：
 
 - <https://learning.getpostman.com/docs/postman/sending-api-requests/visualizer/>
