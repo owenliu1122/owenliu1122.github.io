@@ -19,6 +19,7 @@ typora-copy-image-to: ../images
 
 ### 高亮显示 JSON 数据
 
+{% raw %}
 ``` javascript
 let jsonData = pm.response.json()
 
@@ -39,11 +40,13 @@ pm.visualizer.set(template, {
     response: JSON.stringify(jsonData, null, 4)
 });
 ```
+{% endraw %}
 
 ![image-20191220140352925](/images/image-20191220140352925.png)
 
 ## 显示二维码
 
+{% raw %}
 ``` javascript
 let jsonData = pm.response.json()
 console.log("url:", jsonData["url"])
@@ -99,6 +102,7 @@ pm.visualizer.set(template, {
     response: jsonData
 });
 ```
+{% endraw %}
 
 ![image-20191220171418900](/images/image-20191220171418900.png)
 

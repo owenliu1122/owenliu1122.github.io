@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [转]Postman Pre-Script 实现 RSA 加密
+title: Postman Pre-Script 实现 RSA 加密
 date: 2019-12-21 12:55:52 +0800
 category: Javascript
 tags:
@@ -36,7 +36,7 @@ npm install
 ### 修改配置
 
 将`webpack.config.js`中的`umd`替换为`var`，现在配置文件长这样
-
+{% raw %}
 ```
 const bundle = Object.assign({}, common, {
     output: {
@@ -76,7 +76,7 @@ const bundle = Object.assign({}, common, {
     ]
   });
 ```
-
+{% endraw %}
 ### 重新打包
 
 ```
@@ -102,7 +102,7 @@ postman提供了变量功能，所以可以在postman中手动添加一个变量
 然后新建一个请求，在`pre-script`中添加下面的代码
 
 
-
+{% raw %}
 ```
 eval(postman.getGlobalVariable("forgeJS"));
 
@@ -151,7 +151,7 @@ var decryptedText = privateKey.decrypt(forge.util.decode64(encryptedText), 'RSA-
 
 console.log("dectypted text:" + decryptedText);
 ```
-
+{% endraw %}
 
 
 ![postman-rsa-pre-request-script](/images/postman-rsa-pre-request-script-code.png)
@@ -170,6 +170,7 @@ console.log("dectypted text:" + decryptedText);
 
 上面的办法有点太麻烦了，而且由于文件太大，添加变量的时候会**很卡很卡**，所以可以将`forge.js`添加到web服务器（**本地的也可以，但是直接用github的链接不行**），然后跟上面步骤一样的，但是`pre-script`使用下面的代码，注意要把`http://path/to/forge.js`换成你自己的服务器的地址。
 
+{% raw %}
 ```
 //download forgeJS from web and set varible
 
@@ -232,6 +233,7 @@ if (!pm.globals.has("forgeJS")) {
 
 }
 ```
+{% endraw %}
 
 好了，到这里，已经可以使用postman进行RSA的加解密了！！
 
