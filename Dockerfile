@@ -1,7 +1,12 @@
-FROM jekyll/jekyll:pages
+FROM jekyll/jekyll:latest
+
+RUN gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+
 COPY ./ /srv/jekyll
 
-RUN cd /srv/jekyll && bundle update
+RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+
+RUN cd /srv/jekyll && bundle install
 
 # this should start three processes, mysql and ssh
 # in the background and node app in foreground

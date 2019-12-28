@@ -1,7 +1,10 @@
-jekyll:
-    image: owenliu1122/jekyll:pages
-#    command: bundle install && bundle exec jekyll server
+version: '2'
+
+services:
+  jekyll:
+    image: owenliu1122/jekyll:v1.0.1
+    command: jekyll serve --watch --force_polling --verbose
     ports:
-        - 3998:4000
+      - 4000:4000
     volumes:
-        - /Users/owenliu/my_life/project/src/owenliu1122.github.io:/srv/jekyll/
+      - .:/srv/jekyll
